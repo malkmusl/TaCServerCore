@@ -1,5 +1,6 @@
 package de.winedev.servercore.configdefaults;
 
+import de.winedev.servercore.framework.ConfigDefault;
 import de.winedev.servercore.framework.WGSFile;
 
 import java.util.ArrayList;

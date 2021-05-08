@@ -1,4 +1,4 @@
-package de.winedev.servercore.configdefaults;
+package de.winedev.servercore.framework;
 
 import de.winedev.servercore.Files;
 import de.winedev.servercore.framework.WGSFile;
