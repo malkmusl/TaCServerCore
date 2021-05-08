@@ -1,0 +1,9 @@
+name: ServerCore
+version: ${project.version}
+main: de.winedev.servercore.ServerCore
+api-version: 1.16
+authors: [ WineGaming ]
+description: TaC ServerCore
+commands:
+  perm:
+    usage: '/perm <add/remove> <user/group> <perm>'
