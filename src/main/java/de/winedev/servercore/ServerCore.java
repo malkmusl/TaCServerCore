@@ -1,8 +1,11 @@
 package de.winedev.servercore;
 
 import de.winedev.servercore.configdefaults.FILE_motd;
+import de.winedev.servercore.configdefaults.FILE_users;
+import de.winedev.servercore.configdefaults.File_groups;
 import de.winedev.servercore.framework.CommandHandler;
 import de.winedev.servercore.framework.EventHandler;
+import de.winedev.servercore.framework.FileManager;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,15 +26,8 @@ public class ServerCore extends JavaPlugin implements Files{
         pl = this;
         EventHandler.init();
         CommandHandler.init();
-        FILE_motd file_motd = new FILE_motd(motd);
-        file_motd.addDefaults();
-        try {
-            groups.getConfig().save(groups.getFile());
-            users.getConfig().save(users.getFile());
-            motd.getConfig().save(motd.getFile());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileManager.init();
+
     }
 
     @Override

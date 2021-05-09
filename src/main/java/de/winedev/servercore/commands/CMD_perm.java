@@ -34,15 +34,12 @@ public class CMD_perm implements CommandExecutor, Files {
                                 if(!target.hasPermission(args[3].toString())){
                                     if(!userPerm.contains(args[3])) {
                                         userPerm.add(args[3].toString());
-                                        PermissionAttachment permissionAttachment = new PermissionAttachment(ServerCore.pl, target);
-                                        permissionAttachment.setPermission(args[3].toString(), true);
+                                        target.addAttachment(ServerCore.pl, args[3].toString(), true);
                                         users.getConfig().set(PlayerPath + "permissions", userPerm);
                                         FileManager.save(users);
                                         p.sendMessage("§3Du hast dem Spieler » §e"+ PlayerName +"§3 die Berechtigung » §e"+args[3]+"§3 gegeben");
-                                        return true;
                                     }else {
                                         p.sendMessage("§cDer Spieler » §e"+ PlayerName +" §chat die Berechtigung » §e"+args[3]+"§c bereits");
-                                        return true;
                                     }
                                 }
 
@@ -52,7 +49,7 @@ public class CMD_perm implements CommandExecutor, Files {
                         }
                         return true;
                     }
-                    if (args[0].equalsIgnoreCase("remove")) {
+                    else if (args[0].equalsIgnoreCase("remove")) {
                         if (args[1].equalsIgnoreCase("user")) {
                             FileManager.load(users);
                             String Starget = args[2];
@@ -66,15 +63,12 @@ public class CMD_perm implements CommandExecutor, Files {
                                 if(target.hasPermission(args[3].toString())){
                                     if(userPerm.contains(args[3])) {
                                         userPerm.remove(args[3].toString());
-                                        PermissionAttachment permissionAttachment = new PermissionAttachment(ServerCore.pl, target);
-                                        permissionAttachment.setPermission(args[3].toString(), false);
+                                        target.addAttachment(ServerCore.pl, args[3].toString(), false);
                                         users.getConfig().set(PlayerPath + "permissions", userPerm);
                                         FileManager.save(users);
                                         p.sendMessage("§3Du hast dem Spieler » §e"+ PlayerName +"§3 die Berechtigung » §e"+args[3]+"§3 entzogen");
-                                        return true;
                                     }else {
                                         p.sendMessage("§cDer Spieler » §e"+ PlayerName +" §chat die Berechtigung » §e"+args[3]+"§c nicht");
-                                        return true;
                                     }
                                 }
 
@@ -84,7 +78,10 @@ public class CMD_perm implements CommandExecutor, Files {
                         }
                         return true;
                     }
-                    return false;
+                    else{
+                        p.sendMessage("/perm <add/remove> <user/group> <target> <perm>");
+                    }
+                    return true;
                 }
             }
         }

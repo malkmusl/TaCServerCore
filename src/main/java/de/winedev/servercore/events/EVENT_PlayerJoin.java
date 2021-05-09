@@ -2,6 +2,7 @@ package de.winedev.servercore.events;
 
 import de.winedev.servercore.Files;
 import de.winedev.servercore.ServerCore;
+import de.winedev.servercore.framework.FileManager;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.permissions.PermissionAttachment;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +24,11 @@ public class EVENT_PlayerJoin implements Listener, Files {
         Player p = e.getPlayer();
         String PlayerPath = "users."+p.getUniqueId()+".";
         String GroupPath = PlayerPath+"group";
-        loadUsers();
-        loadGroups();
+        String AutoNickPath = PlayerPath+"autonick";
+        String PlayerNamePath = PlayerPath+"name";
 
+        FileManager.load(users);
+        FileManager.load(groups);
         // add Group Specific Permissions to Player
         if(users.getConfig().contains(PlayerPath)){
             p.sendMessage("§6Willkommen zurück!");
@@ -64,26 +68,25 @@ public class EVENT_PlayerJoin implements Listener, Files {
                 ioException.printStackTrace();
             }
         }
-    }
+        String usergroup = users.getConfig().get(GroupPath).toString();
+        if(users.getConfig().getBoolean(AutoNickPath)){
+            String prefix = groups.getConfig().get("default.prefix").toString().replace("&","§")+" ";
+            String suffix = " "+groups.getConfig().get("default.suffix").toString().replace("&","§");
 
+            e.setJoinMessage("[+] "+users.getConfig().get(PlayerNamePath));
 
-    private void loadUsers() {
-        try {
-            users.getConfig().load(users.getFile());
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        } catch (InvalidConfigurationException invalidConfigurationException) {
-            invalidConfigurationException.printStackTrace();
+            p.setPlayerListName(prefix+users.getConfig().get(PlayerNamePath)+suffix);
+            p.setDisplayName(prefix+users.getConfig().get(PlayerNamePath)+suffix);
+
+        }else{
+            String prefix = groups.getConfig().get(usergroup+".prefix").toString().replace("&","§")+" ";
+            String suffix = " "+groups.getConfig().get(usergroup+".suffix").toString().replace("&","§");
+
+            e.setJoinMessage("[+] "+users.getConfig().get(PlayerNamePath));
+
+            p.setPlayerListName(prefix+p.getName()+suffix);
+            p.setDisplayName(prefix+p.getName()+suffix);
         }
     }
 
-    public static void loadGroups(){
-        try {
-            groups.getConfig().load(groups.getFile());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-    }
 }

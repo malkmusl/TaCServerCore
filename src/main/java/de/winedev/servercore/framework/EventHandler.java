@@ -14,6 +14,7 @@ public class EventHandler {
         regEvents(new EVENT_BlockPlace());
         regEvents(new EVENT_PlayerMove());
         regEvents(new EVENT_PlayerJoin());
+        regEvents(new EVENT_PlayerChat());
     }
 
     private static void regEvents(Listener event){
