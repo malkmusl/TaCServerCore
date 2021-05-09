@@ -8,6 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachment;
 
 import java.util.List;
 import java.util.Locale;
@@ -241,9 +242,43 @@ public class CMD_perm implements CommandExecutor, Files {
             }
         } else if(args.length == 3){
             if (args[0].equalsIgnoreCase("list")) {
-                sender.sendMessage("§c8Work in Progress");
+
+                if (args[1].equalsIgnoreCase("user")) {
+                    FileManager.load(users);
+                    String Starget = args[2];
+                    Player target = Bukkit.getPlayerExact(Starget);
+
+                    if (Bukkit.getOnlinePlayers().contains(target)) {
+
+                        String PlayerPath = "users." + target.getUniqueId() + ".";
+                        String PlayerNamePath = PlayerPath + "name";
+
+                        List userPerm = users.getConfig().getList(PlayerPath + "permissions");
+
+                        sender.sendMessage("§3Berrechtigungen vom Spieler » "+ target.getDisplayName());
+                        sender.sendMessage("§7"+userPerm.toString());
+
+                    }else{
+                        Bukkit.getConsoleSender().sendMessage("§cDer Spieler " + args[2] + " ist offline");
+                    }
+                }else if(args[1].equalsIgnoreCase("group")){
+                    FileManager.load(groups);
+                    if(groups.getConfig().contains(args[2].toLowerCase(Locale.ROOT).toString())) {
+                        List groupsPerm = groups.getConfig().getList(args[2].toLowerCase(Locale.ROOT).toString() + ".permissions");
+
+                        sender.sendMessage("§3Berrechtigungen von Gruppe » "+ args[2]);
+                        sender.sendMessage("§7"+groupsPerm.toString());
+                    }else{
+                        sender.sendMessage("§cDie Gruppe » §e" + args[2].toUpperCase(Locale.ROOT).toString() + " §cexistiert nicht");
+                    }
+
+
+                }else{
+                    sender.sendMessage("§cUsage: /perm <add/remove/list> <user/group> <target> <perm>");
+                }
+
             }else{
-                sender.sendMessage("§cUsage: /perm <add/remove/list> <user/group> <target> <perm>");
+                Bukkit.getConsoleSender().sendMessage("§cUsage: /perm <add/remove/list> <user/group> <target> <perm>");
             }
         } else {
             // args != 4 than give this message

@@ -35,11 +35,15 @@ public class EVENT_PlayerChat implements Listener, Files{
                         String suffix = groups.getConfig().get("default.suffix").toString().replace("&","§")+" ";
                         String chatColor = groups.getConfig().get("default.chatcolor").toString().replace("&","§")+" ";
                         e.setFormat(prefix+PlayerName+suffix+"»"+chatColor+e.getMessage());
+                        p.setPlayerListName(prefix+PlayerName+suffix+"§r");
+                        p.setDisplayName(prefix+PlayerName+suffix+"§r");
                     }else{
                         String prefix = groups.getConfig().get(usergroup+".prefix").toString().replace("&","§")+" ";
                         String suffix = groups.getConfig().get(usergroup+".suffix").toString().replace("&","§")+" ";
                         String chatColor = groups.getConfig().get(usergroup+".chatcolor").toString().replace("&","§")+" ";
                         e.setFormat(prefix+PlayerName+suffix+"»"+chatColor+e.getMessage());
+                        p.setPlayerListName(prefix+PlayerName+suffix+"§r");
+                        p.setDisplayName(prefix+PlayerName+suffix+"§r");
                     }
                 }else{
                     p.sendMessage("§4[ERROR] die Gruppe existiert nicht wende dich bitte an einen Admin oder Owner");
@@ -47,6 +51,8 @@ public class EVENT_PlayerChat implements Listener, Files{
                     String suffix = groups.getConfig().get("default.suffix").toString().replace("&","§")+" ";
                     String chatColor = groups.getConfig().get("default.chatcolor").toString().replace("&","§")+" ";
                     e.setFormat(prefix+PlayerName+suffix+"»"+chatColor+e.getMessage());
+                    p.setPlayerListName(prefix+PlayerName+suffix+"§r");
+                    p.setDisplayName(prefix+PlayerName+suffix+"§r");
                 }
             }else{
                 p.kickPlayer("Your PlayerData is currupted");

@@ -33,16 +33,12 @@ public class EVENT_PlayerJoin implements Listener, Files {
         if(users.getConfig().contains(PlayerPath)){
             p.sendMessage("§6Willkommen zurück!");
             String usergroup = users.getConfig().get(GroupPath).toString();
-            p.sendMessage("");
-            p.sendMessage("§7[DEBUG]");
-            p.sendMessage("§7Group: "+usergroup);
             if(groups.getConfig().contains(usergroup)){
                 List groupsList = groups.getConfig().getList(usergroup+".permissions");
                 for(int i = 0; i < groupsList.size(); i++) {
                     String perm = (groupsList.get(i)).toString();
                     p.addAttachment(ServerCore.pl, perm, true);
                 }
-                p.sendMessage("§7GroupPerms: "+groupsList.toString());
             }else{
                 p.sendMessage("§4[ERROR] die Gruppe existiert nicht");
             }
@@ -52,8 +48,6 @@ public class EVENT_PlayerJoin implements Listener, Files {
                 String perm = (userPerm.get(i)).toString();
                 p.addAttachment(ServerCore.pl, perm, true);
             }
-            p.sendMessage("§7UserPerms: "+userPerm.toString());
-            p.sendMessage("");
         }else{
             p.sendMessage("Willkommen auf dem Server");
             users.getConfig().set(PlayerPath + "name", p.getName());
