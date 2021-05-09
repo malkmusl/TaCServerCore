@@ -18,24 +18,30 @@ public class CMD_perm implements CommandExecutor, Files {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length == 4) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                if (p.hasPermission("servercore.perm") || p.hasPermission("servercore.*") || p.isOp()) {
-                    if (args[0].equalsIgnoreCase("add")) {
-                        if (args[1].equalsIgnoreCase("user")) {
 
+        //this command allows the player/console to add permissions to a group/player
+        //by using /perm <add/remove/list> <user/group> <target> [perm]
+
+        if (args.length == 4) {//chacking the args langh == 4 to run the main part of the command
+            if (sender instanceof Player) {//chacking if it player or console
+                Player p = (Player) sender;
+                if (p.hasPermission("servercore.perm") || p.hasPermission("servercore.*") || p.isOp()) {//chacking the permissions to run the command -> PlayerSide
+
+                    if (args[0].equalsIgnoreCase("add")) {//chacking for add/remove/list this is add  -> PlayerSide
+
+                        if (args[1].equalsIgnoreCase("user")) {//starting the user part of the command -> PlayerSide
+                            //first load user_file and set targets
                             FileManager.load(users);
                             String Starget = args[2];
                             Player target = Bukkit.getPlayerExact(Starget);
-
+                            //chack if target is Online Player
                             if (Bukkit.getOnlinePlayers().contains(target)) {
-
+                                //getting resources from files for setup -> PlayerSide
                                 String PlayerPath = "users." + target.getUniqueId() + ".";
                                 String PlayerNamePath = PlayerPath + "name";
                                 String PlayerName = users.getConfig().get(PlayerNamePath).toString();
 
-                                // add Player Specific Permissions to Player
+                                // add Player Specific Permissions to Player -> PlayerSide
                                 List userPerm = users.getConfig().getList(PlayerPath + "permissions");
                                 if (!target.hasPermission(args[3].toString())) {
                                     if (!userPerm.contains(args[3])) {
@@ -54,7 +60,11 @@ public class CMD_perm implements CommandExecutor, Files {
                             } else {
                                 p.sendMessage("§cDer Spieler " + args[2] + " ist offline");
                             }
-                        } else if(args[1].equalsIgnoreCase("group")){
+
+                            //add userperm command end -> PlayerSide
+
+
+                        } else if(args[1].equalsIgnoreCase("group")){//starting the group part of the command -> PlayerSide
                             FileManager.load(groups);
                             if(groups.getConfig().contains(args[2].toLowerCase(Locale.ROOT).toString())){
                                 List groupsPerm = groups.getConfig().getList(args[2].toLowerCase(Locale.ROOT).toString() + ".permissions");
@@ -73,21 +83,30 @@ public class CMD_perm implements CommandExecutor, Files {
                         }else{
 
                         }
-                    } else if (args[0].equalsIgnoreCase("remove")) {
-                        if (args[1].equalsIgnoreCase("user")) {
 
+                        //add groupperm command end -> PlayerSide
+
+                        //this command allows the player/console to add permissions to a group/player
+                        //by using /perm <add/remove/list> <user/group> <target> [perm]
+
+                    } else if (args[0].equalsIgnoreCase("remove")) {//chacking for add/remove/list this is remove  -> PlayerSide
+                        if (args[1].equalsIgnoreCase("user")) {//starting the user part of the command -> PlayerSide
+
+                            //first load user_file and set targets
                             FileManager.load(users);
                             String Starget = args[2];
                             Player target = Bukkit.getPlayerExact(Starget);
 
+                            //chack if target is Online Player
                             if (Bukkit.getOnlinePlayers().contains(target)) {
 
+                                //getting resources from files for setup -> PlayerSide
                                 String PlayerPath = "users." + target.getUniqueId() + ".";
                                 String PlayerNamePath = PlayerPath + "name";
                                 String PlayerName = users.getConfig().get(PlayerNamePath).toString();
 
 
-                                // add Player Specific Permissions to Player
+                                // remove Player Specific Permissions to Player
                                 List userPerm = users.getConfig().getList(PlayerPath + "permissions");
                                 if (target.hasPermission(args[3].toString())) {
                                     if (userPerm.contains(args[3])) {
@@ -106,9 +125,16 @@ public class CMD_perm implements CommandExecutor, Files {
                             } else {
                                 p.sendMessage("§cDer Spieler " + args[2] + " ist offline");
                             }
-                        } else if(args[1].equalsIgnoreCase("group")){
+
+                            //remove userperm command end -> PlayerSide
+
+
+                        } else if(args[1].equalsIgnoreCase("group")){//starting the group part of the command -> PlayerSide
+                            //first load groups_file
                             FileManager.load(groups);
+                            //chacking group_file contain target
                             if(groups.getConfig().contains(args[2].toLowerCase(Locale.ROOT).toString())){
+                                //add groupperms to a list to work with
                                 List groupsPerm = groups.getConfig().getList(args[2].toLowerCase(Locale.ROOT).toString() + ".permissions");
                                 if (groupsPerm.contains(args[3])) {
                                     groupsPerm.remove(args[3].toString());
@@ -131,9 +157,13 @@ public class CMD_perm implements CommandExecutor, Files {
                 } else {
                     p.sendMessage("§cDu hast keine Berechtigung diesen Befehl aus zuführen");
                 }
-            } else {// COnsole COmmand
+
+                //end of the PlayerSide Command the Console side works near the same with out chacking the permissions and use CommandSender instad of p(Player)
+
+                //by using /perm <add/remove/list> <user/group> <target> [perm]
 
 
+            } else {//begin of the console side command please read the annotations on top if you have questions
                 if (args[0].equalsIgnoreCase("add")) {
                     if (args[1].equalsIgnoreCase("user")) {
 

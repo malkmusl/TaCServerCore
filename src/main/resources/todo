@@ -1,0 +1,16 @@
+Commmands:
+    * /group <target> <create/delete/option/add/remove> <value> [option]
+    - /nick
+    - /ban <target> [reason]
+    - /tempban <target> <time> [reason]
+    - /kick <target> [reason]
+    - /stats [enable/disable] -> enable and disable to set it as scoreboard
+Functions:
+    - Customisable Messages
+    - Multi-Language-Support
+    - MySQL-Support
+Events:
+    - PlayerListPingEvent
+    - PlayerInteractWithEntity
+    - PlayerDamageByPlayer
+    - PlayerDamageByEntity
