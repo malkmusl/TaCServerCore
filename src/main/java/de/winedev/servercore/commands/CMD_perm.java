@@ -24,7 +24,7 @@ public class CMD_perm implements CommandExecutor, Files {
                         if (args[1].equalsIgnoreCase("user")) {
                             FileManager.load(users);
                             String Starget = args[2];
-                            Player target = Bukkit.getPlayer(Starget);
+                            Player target = Bukkit.getPlayerExact(Starget);
                             if(Bukkit.getOnlinePlayers().contains(target)){
                                 String PlayerPath = "users."+target.getUniqueId()+".";
                                 String PlayerNamePath = PlayerPath+"name";
@@ -49,11 +49,11 @@ public class CMD_perm implements CommandExecutor, Files {
                         }
                         return true;
                     }
-                    else if (args[0].equalsIgnoreCase("remove")) {
+                    if (args[0].equalsIgnoreCase("remove")) {
                         if (args[1].equalsIgnoreCase("user")) {
                             FileManager.load(users);
                             String Starget = args[2];
-                            Player target = Bukkit.getPlayer(Starget);
+                            Player target = Bukkit.getPlayerExact(Starget);
                             if(Bukkit.getOnlinePlayers().contains(target)){
                                 String PlayerPath = "users."+target.getUniqueId()+".";
                                 String PlayerNamePath = PlayerPath+"name";

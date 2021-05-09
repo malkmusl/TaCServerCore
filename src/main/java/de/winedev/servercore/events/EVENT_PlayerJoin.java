@@ -75,8 +75,8 @@ public class EVENT_PlayerJoin implements Listener, Files {
 
             e.setJoinMessage("§7[+] "+users.getConfig().get(PlayerNamePath));
 
-            p.setPlayerListName(prefix+users.getConfig().get(PlayerNamePath)+suffix);
-            p.setDisplayName(prefix+users.getConfig().get(PlayerNamePath)+suffix);
+            p.setPlayerListName(prefix+users.getConfig().get(PlayerNamePath)+suffix+"§r");
+            p.setDisplayName(prefix+users.getConfig().get(PlayerNamePath)+suffix+"§r");
 
         }else{
             String prefix = groups.getConfig().get(usergroup+".prefix").toString().replace("&","§")+" ";
