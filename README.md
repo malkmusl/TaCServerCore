@@ -1,2 +1,2 @@
 "TaCServerCore for TaC MineCraft Server"
-Version: 0.0.1-SNAPSHOT
+Version: 0.0.4-SNAPSHOT
