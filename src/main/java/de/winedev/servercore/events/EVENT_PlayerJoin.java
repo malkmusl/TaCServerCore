@@ -73,7 +73,7 @@ public class EVENT_PlayerJoin implements Listener, Files {
             String prefix = groups.getConfig().get("default.prefix").toString().replace("&","§")+" ";
             String suffix = " "+groups.getConfig().get("default.suffix").toString().replace("&","§");
 
-            e.setJoinMessage("[+] "+users.getConfig().get(PlayerNamePath));
+            e.setJoinMessage("§7[+] "+users.getConfig().get(PlayerNamePath));
 
             p.setPlayerListName(prefix+users.getConfig().get(PlayerNamePath)+suffix);
             p.setDisplayName(prefix+users.getConfig().get(PlayerNamePath)+suffix);
@@ -82,10 +82,10 @@ public class EVENT_PlayerJoin implements Listener, Files {
             String prefix = groups.getConfig().get(usergroup+".prefix").toString().replace("&","§")+" ";
             String suffix = " "+groups.getConfig().get(usergroup+".suffix").toString().replace("&","§");
 
-            e.setJoinMessage("[+] "+users.getConfig().get(PlayerNamePath));
+            e.setJoinMessage("§7[+] "+p.getName());
 
-            p.setPlayerListName(prefix+p.getName()+suffix);
-            p.setDisplayName(prefix+p.getName()+suffix);
+            p.setPlayerListName(prefix+p.getName()+suffix+"§r");
+            p.setDisplayName(prefix+p.getName()+suffix+"§r");
         }
     }
 
