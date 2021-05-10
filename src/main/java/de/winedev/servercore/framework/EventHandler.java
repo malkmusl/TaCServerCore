@@ -7,18 +7,18 @@ import org.bukkit.plugin.Plugin;
 
 public class EventHandler {
 
-    static Plugin sc = ServerCore.pl;
+  static Plugin sc = ServerCore.pl;
 
-    public static void init() {
-        regEvents(new EVENT_BlockBrake());
-        regEvents(new EVENT_BlockPlace());
-        regEvents(new EVENT_PlayerMove());
-        regEvents(new EVENT_PlayerJoin());
-        regEvents(new EVENT_PlayerChat());
-    }
+  public static void init() {
+    regEvents(new EVENT_BlockBrake());
+    regEvents(new EVENT_BlockPlace());
+    regEvents(new EVENT_PlayerMove());
+    regEvents(new EVENT_PlayerJoin());
+    regEvents(new EVENT_PlayerChat());
+  }
 
-    private static void regEvents(Listener event){
-        sc.getServer().getPluginManager().registerEvents(event, sc);
-        System.out.println("Das Event "+ event.getClass().getSimpleName()+" wurde regestriert");
-    }
+  private static void regEvents(Listener event) {
+    sc.getServer().getPluginManager().registerEvents(event, sc);
+    System.out.println("Das Event " + event.getClass().getSimpleName() + " wurde regestriert");
+  }
 }

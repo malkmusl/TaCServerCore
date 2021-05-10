@@ -15,7 +15,6 @@ default:
 
  */
 
-
 import de.winedev.servercore.framework.ConfigDefault;
 import de.winedev.servercore.framework.WGSFile;
 
@@ -23,19 +22,19 @@ import java.util.ArrayList;
 
 public class File_groups extends ConfigDefault {
 
-    public File_groups(WGSFile wgsFile) {
-        super(groups);
-    }
+  public File_groups(WGSFile wgsFile) {
+    super(groups);
+  }
 
-    @Override
-    public void addDefaults() {
-        add("default.prefix", "&a[User]");
-        add("default.suffix", "");
-        add("default.chatcolor", "&7");
-        ArrayList<String> exampleperms = new ArrayList<>();
-        exampleperms.add("servercore.move");
-        exampleperms.add("servercore.build");
-        exampleperms.add("servercore.chat");
-        add("default.permissions", exampleperms);
-    }
+  @Override
+  public void addDefaults() {
+    add("default.prefix", "&a[User]");
+    add("default.suffix", "");
+    add("default.chatcolor", "&7");
+    ArrayList<String> exampleperms = new ArrayList<>();
+    exampleperms.add("servercore.move");
+    exampleperms.add("servercore.build");
+    exampleperms.add("servercore.chat");
+    add("default.permissions", exampleperms);
+  }
 }

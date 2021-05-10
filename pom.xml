@@ -54,6 +54,7 @@
     </build>
 
     <repositories>
+
         <repository>
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
@@ -61,6 +62,11 @@
         <repository>
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+
+        <repository>
+            <id>public</id>
+            <url>http://haoshoku.xyz:8081/repository/public</url>
         </repository>
     </repositories>
 
@@ -71,5 +77,12 @@
             <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>xyz.haoshoku.nick</groupId>
+            <artifactId>nickapi</artifactId>
+            <version>6.1.2-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 </project>

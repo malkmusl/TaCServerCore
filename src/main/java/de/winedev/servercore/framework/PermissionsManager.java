@@ -6,9 +6,9 @@ import org.bukkit.plugin.Plugin;
 
 public class PermissionsManager {
 
-    static Plugin sc = ServerCore.pl;
+  static Plugin sc = ServerCore.pl;
 
-    public static void addPermissions(Player p, String permission){
-        p.addAttachment(sc,permission, true);
-    }
+  public static void addPermissions(Player p, String permission) {
+    p.addAttachment(sc, permission, true);
+  }
 }

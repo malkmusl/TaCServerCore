@@ -1,19 +1,21 @@
 package de.winedev.servercore.framework;
 
 import de.winedev.servercore.ServerCore;
+import de.winedev.servercore.commands.CMD_group;
 import de.winedev.servercore.commands.CMD_perm;
 import org.bukkit.command.CommandExecutor;
-import org.bukkit.plugin.Plugin;
 
-public class CommandHandler{
+import java.util.Objects;
 
-    public static void init() {
-        regCommand("perm", new CMD_perm());
+public class CommandHandler {
 
-    }
+  public static void init() {
+    regCommand("perm", new CMD_perm());
+    regCommand("group", new CMD_group());
+  }
 
-    private static void regCommand(String cmd, CommandExecutor executor){
-        ServerCore.serverCore.getCommand(cmd).setExecutor(executor);
-        System.out.println("Der Command "+ executor.getClass().getSimpleName()+" wurde regestriert");
-    }
+  private static void regCommand(String cmd, CommandExecutor executor) {
+    Objects.requireNonNull(ServerCore.serverCore.getCommand(cmd)).setExecutor(executor);
+    System.out.println("Der Command " + executor.getClass().getSimpleName() + " wurde regestriert");
+  }
 }
