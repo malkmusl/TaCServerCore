@@ -47,13 +47,13 @@ public class FileManager implements Files {
   }
 
   public static void init() {
-    File_groups file_groups = new File_groups(groups);
+    File_groups file_groups = new File_groups();
     file_groups.addDefaults();
 
-    FILE_motd file_motd = new FILE_motd(motd);
+    FILE_motd file_motd = new FILE_motd();
     file_motd.addDefaults();
 
-    FILE_users file_users = new FILE_users(users);
+    FILE_users file_users = new FILE_users();
     file_users.addDefaults();
 
     save(users);

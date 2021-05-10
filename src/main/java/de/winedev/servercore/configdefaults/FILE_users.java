@@ -1,7 +1,6 @@
 package de.winedev.servercore.configdefaults;
 
 import de.winedev.servercore.framework.ConfigDefault;
-import de.winedev.servercore.framework.WGSFile;
 
 import java.util.ArrayList;
 
@@ -17,9 +16,8 @@ users:
  */
 
 public class FILE_users extends ConfigDefault {
-  private WGSFile wgsFile;
 
-  public FILE_users(WGSFile wgsFile) {
+  public FILE_users() {
     super(users);
   }
 

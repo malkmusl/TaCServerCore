@@ -16,13 +16,12 @@ default:
  */
 
 import de.winedev.servercore.framework.ConfigDefault;
-import de.winedev.servercore.framework.WGSFile;
 
 import java.util.ArrayList;
 
 public class File_groups extends ConfigDefault {
 
-  public File_groups(WGSFile wgsFile) {
+  public File_groups() {
     super(groups);
   }
 

@@ -1,12 +1,11 @@
 package de.winedev.servercore.configdefaults;
 
 import de.winedev.servercore.framework.ConfigDefault;
-import de.winedev.servercore.framework.WGSFile;
 
 import java.util.ArrayList;
 
 public class FILE_motd extends ConfigDefault {
-  public FILE_motd(WGSFile wgsFile) {
+  public FILE_motd() {
     super(motd);
   }
 
