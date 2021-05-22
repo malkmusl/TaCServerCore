@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import xyz.haoshoku.nick.api.NickAPI;
 
 import java.util.Objects;
 
@@ -33,20 +32,29 @@ public class EVENT_PlayerChat implements Listener, Files {
 
           if (users.getConfig().getBoolean(AutoNickPath)) {
             String prefix =
-                Objects.requireNonNull(groups.getConfig().get("default.prefix")).toString().replace("&", "§") + " ";
+                Objects.requireNonNull(groups.getConfig().get("default.prefix"))
+                        .toString()
+                        .replace("&", "§")
+                    + " ";
             String suffix =
-                Objects.requireNonNull(groups.getConfig().get("default.suffix")).toString().replace("&", "§") + " ";
+                Objects.requireNonNull(groups.getConfig().get("default.suffix"))
+                        .toString()
+                        .replace("&", "§")
+                    + " ";
             String chatColor =
-                Objects.requireNonNull(groups.getConfig().get("default.chatcolor")).toString().replace("&", "§") + " ";
+                Objects.requireNonNull(groups.getConfig().get("default.chatcolor"))
+                        .toString()
+                        .replace("&", "§")
+                    + " ";
             //
             //
             //
-            if (!NickAPI.isNicked(p)) {
-              NickAPI.nick(p, prefix + PlayerName + suffix + "§r");
-              NickAPI.setUniqueId(p, PlayerName);
-              NickAPI.setGameProfileName(p, PlayerName);
-              NickAPI.refreshPlayer(p);
-            }
+            // if (!NickAPI.isNicked(p)) {
+            // NickAPI.nick(p, prefix + PlayerName + suffix + "§r");
+            // NickAPI.setUniqueId(p, PlayerName);
+            // NickAPI.setGameProfileName(p, PlayerName);
+            // NickAPI.refreshPlayer(p);
+            // }
             //
             //
             //
@@ -55,21 +63,30 @@ public class EVENT_PlayerChat implements Listener, Files {
             p.setDisplayName(prefix + PlayerName + suffix + "§r");
           } else {
             String prefix =
-                Objects.requireNonNull(groups.getConfig().get(usergroup + ".prefix")).toString().replace("&", "§") + " ";
+                Objects.requireNonNull(groups.getConfig().get(usergroup + ".prefix"))
+                        .toString()
+                        .replace("&", "§")
+                    + " ";
             String suffix =
-                Objects.requireNonNull(groups.getConfig().get(usergroup + ".suffix")).toString().replace("&", "§") + " ";
+                Objects.requireNonNull(groups.getConfig().get(usergroup + ".suffix"))
+                        .toString()
+                        .replace("&", "§")
+                    + " ";
             String chatColor =
-                Objects.requireNonNull(groups.getConfig().get(usergroup + ".chatcolor")).toString().replace("&", "§") + " ";
+                Objects.requireNonNull(groups.getConfig().get(usergroup + ".chatcolor"))
+                        .toString()
+                        .replace("&", "§")
+                    + " ";
             e.setFormat(prefix + p.getName() + suffix + "»" + chatColor + e.getMessage());
             //
             //
             //
-            if (!NickAPI.isNicked(p)) {
-              NickAPI.nick(p, prefix + PlayerName + suffix + "§r");
-              NickAPI.setUniqueId(p, PlayerName);
-              NickAPI.setGameProfileName(p, PlayerName);
-              NickAPI.refreshPlayer(p);
-            }
+            // if (!NickAPI.isNicked(p)) {
+            // NickAPI.nick(p, prefix + PlayerName + suffix + "§r");
+            // NickAPI.setUniqueId(p, PlayerName);
+            // NickAPI.setGameProfileName(p, PlayerName);
+            // NickAPI.refreshPlayer(p);
+            // }
             //
             //
             //
@@ -78,21 +95,30 @@ public class EVENT_PlayerChat implements Listener, Files {
           p.sendMessage(
               "§4[ERROR] die Gruppe existiert nicht wende dich bitte an einen Admin oder Owner");
           String prefix =
-              Objects.requireNonNull(groups.getConfig().get("default.prefix")).toString().replace("&", "§") + " ";
+              Objects.requireNonNull(groups.getConfig().get("default.prefix"))
+                      .toString()
+                      .replace("&", "§")
+                  + " ";
           String suffix =
-              Objects.requireNonNull(groups.getConfig().get("default.suffix")).toString().replace("&", "§") + " ";
+              Objects.requireNonNull(groups.getConfig().get("default.suffix"))
+                      .toString()
+                      .replace("&", "§")
+                  + " ";
           String chatColor =
-              Objects.requireNonNull(groups.getConfig().get("default.chatcolor")).toString().replace("&", "§") + " ";
+              Objects.requireNonNull(groups.getConfig().get("default.chatcolor"))
+                      .toString()
+                      .replace("&", "§")
+                  + " ";
           e.setFormat(prefix + PlayerName + suffix + "»" + chatColor + e.getMessage());
           //
           //
           //
-          if (!NickAPI.isNicked(p)) {
-            NickAPI.nick(p, prefix + PlayerName + suffix + "§r");
-            NickAPI.setUniqueId(p, PlayerName);
-            NickAPI.setGameProfileName(p, PlayerName);
-            NickAPI.refreshPlayer(p);
-          }
+          // if (!NickAPI.isNicked(p)) {
+          // NickAPI.nick(p, prefix + PlayerName + suffix + "§r");
+          // NickAPI.setUniqueId(p, PlayerName);
+          // NickAPI.setGameProfileName(p, PlayerName);
+          // NickAPI.refreshPlayer(p);
+          // }
           //
           //
           //

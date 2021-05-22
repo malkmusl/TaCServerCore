@@ -15,6 +15,11 @@ public class EventHandler {
     regEvents(new EVENT_PlayerMove());
     regEvents(new EVENT_PlayerJoin());
     regEvents(new EVENT_PlayerChat());
+    regEvents(new EVENT_PlayerDamageByEntiy());
+    regEvents(new EVENT_PlayerAttackEntiy());
+    regEvents(new EVENT_PlayerInteractWithEntity());
+    regEvents(new EVENT_PlayerInteract());
+    //regEvents(new EVENT_ServerListPing());
   }
 
   private static void regEvents(Listener event) {

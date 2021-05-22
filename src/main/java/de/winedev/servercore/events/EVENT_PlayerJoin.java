@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import xyz.haoshoku.nick.api.NickAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,16 +78,6 @@ public class EVENT_PlayerJoin implements Listener, Files {
       String PlayerName = Objects.requireNonNull(users.getConfig().get(PlayerNamePath)).toString();
       e.setJoinMessage("§7[+] " + users.getConfig().get(PlayerNamePath));
 
-      //
-      //
-      //
-      NickAPI.nick(p, prefix + PlayerName + suffix + "§r");
-      NickAPI.setUniqueId(p, PlayerName);
-      NickAPI.setGameProfileName(p, PlayerName);
-      NickAPI.refreshPlayer(p);
-      //
-      //
-      //
     } else {
       String prefix =
           Objects.requireNonNull(groups.getConfig().get(usergroup + ".prefix"))
@@ -102,17 +91,6 @@ public class EVENT_PlayerJoin implements Listener, Files {
                   .replace("&", "§");
 
       e.setJoinMessage("§7[+] " + p.getName());
-
-      //
-      //
-      //
-      NickAPI.nick(p, prefix + NickAPI.getOriginalName(p) + suffix + "§r");
-      NickAPI.setUniqueId(p, NickAPI.getOriginalName(p));
-      NickAPI.setGameProfileName(p, NickAPI.getOriginalName(p));
-      NickAPI.refreshPlayer(p);
-      //
-      //
-      //
     }
   }
 }

@@ -4,6 +4,7 @@ import de.winedev.servercore.Files;
 import de.winedev.servercore.ServerCore;
 import de.winedev.servercore.framework.FileManager;
 import org.bukkit.Bukkit;
+import org.bukkit.block.data.type.Bell;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -48,6 +49,7 @@ public class CMD_perm implements CommandExecutor, Files {
                 if (!target.hasPermission(args[3].toString())) {
                   if (!userPerm.contains(args[3])) {
                     userPerm.add(args[3].toString());
+
                     target.addAttachment(ServerCore.pl, args[3].toString(), true);
                     users.getConfig().set(PlayerPath + "permissions", userPerm);
                     FileManager.save(users);

@@ -14,9 +14,16 @@ public class CMD_group implements CommandExecutor {
     if (sender instanceof Player) {
       Player p = (Player) sender;
       if (p.hasPermission("servercore.group") || p.hasPermission("servercore.*") || p.isOp()) {
-        // player side command structure
+        if(args.length >= 3 || args.length <= 5){
+          switch (args[0].toString()){
+            case "create":
+              p.sendMessage("create");
+            case "delete":
+
+          }
+        }
       } else {
-        // console side command structure
+        p.sendMessage("Du hast keine Berrechtigung denn Befehl auszuführen");
       }
     }
     return true;
